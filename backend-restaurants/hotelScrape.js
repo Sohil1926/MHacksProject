@@ -48,11 +48,13 @@ async function getAccessToken(clientId, clientSecret) {
   
   async function getHotelOffers(accessToken, hotelId) {
     try {
-      const response = await axios.get(`${amadeusEndpoints.hotelOffers}?hotelId=${hotelId}`, {
+        // console.log(`${amadeusEndpoints.hotelSearch}?hotelIds=[${hotelId}]`);
+      const response = await axios.get(`${amadeusEndpoints.hotelSearch}?hotelIds=[${hotelId}]`, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }
       });
+      
       return response.data;
     } catch (error) {
       console.error('Error fetching hotel offers:', error.response ? error.response.data : error);
@@ -63,17 +65,19 @@ async function getAccessToken(clientId, clientSecret) {
   (async () => {
     const accessToken = await getAccessToken(apiCredentials.clientId, apiCredentials.clientSecret);
     if (accessToken) {
-      const cityCode = 'PAR'; // Example city code for Paris
+      const cityCode = 'SFO'; // Example city code for Paris
       const hotelListData = await getHotelList(accessToken, cityCode);
-      console.log(hotelListData);
+    //   console.log(hotelListData);
       
-    //   if (hotelListData) {
-    //     for (const hotel of hotelListData.data) {
-    //       const hotelOffersData = await getHotelOffers(accessToken, hotel.hotelId);
-    //       if (hotelOffersData) {
-    //         console.log(`${hotel.name}: ${hotelOffersData.offers[0].price.total}`);
-    //       }
-    //     }
-    //   }
+      if (hotelListData) {
+        for (const hotel of hotelListData.data) {
+          const hotelOffersData = await getHotelOffers(accessToken, hotel.hotelId);
+          console.log(hotelOffersData.data[0].offers[0].price);
+        //   if (hotelOffersData) {
+        //     console.log(hotelListData);
+        //     // console.log(`${hotel.name}: ${hotelOffersData.offers[0].price.total}`);
+        //   }
+        }
+      }
     }
   })();
