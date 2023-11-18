@@ -29,44 +29,51 @@ async function getAccessToken(clientId, clientSecret) {
     }
   }
 
-// Function to search for hotels
-async function searchHotels(accessToken, latitude, longitude, checkInDate, checkOutDate) {
-  try {
-    const response = await axios.get(amadeusEndpoints.hotelSearch, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      },
-      params: {
-        hotelIds: ["MCLONGHM"],
-        
-        checkInDate,
-        checkOutDate,
-        sort: 'PRICE' // Sorting by price
-      }
-    });
-    return response.data;
-  } catch (error) {
-    console.error('Error searching for hotels:', error.response.data);
-    return null;
-  }
-}
-
-(async () => {
-  const accessToken = await getAccessToken(apiCredentials.clientId, apiCredentials.clientSecret);
-  if (accessToken) {
-    const hotelsData = await searchHotels(
-      accessToken,
-      '44.3148', // Latitude of Paris, example
-      '85.6024',  // Longitude of Paris, example
-      '2023-12-01', // Check-in date, example
-      '2023-12-10'  // Check-out date, example
-    );
-    
-    if (hotelsData) {
-      // Log the first 5 cheapest hotels
-      hotelsData.data.slice(0, 5).forEach(hotel => {
-        console.log(`${hotel.hotel.name}: ${hotel.offers[0].price.total}`);
+  async function getHotelList(accessToken, cityCode) {
+    try {
+      const response = await axios.get(amadeusEndpoints.hotelList, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        },
+        params: {
+          cityCode
+        }
       });
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching hotel list:', error.response ? error.response.data : error);
+      return null;
     }
   }
-})();
+  
+  async function getHotelOffers(accessToken, hotelId) {
+    try {
+      const response = await axios.get(`${amadeusEndpoints.hotelOffers}?hotelId=${hotelId}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching hotel offers:', error.response ? error.response.data : error);
+      return null;
+    }
+  }
+  
+  (async () => {
+    const accessToken = await getAccessToken(apiCredentials.clientId, apiCredentials.clientSecret);
+    if (accessToken) {
+      const cityCode = 'PAR'; // Example city code for Paris
+      const hotelListData = await getHotelList(accessToken, cityCode);
+      console.log(hotelListData);
+      
+    //   if (hotelListData) {
+    //     for (const hotel of hotelListData.data) {
+    //       const hotelOffersData = await getHotelOffers(accessToken, hotel.hotelId);
+    //       if (hotelOffersData) {
+    //         console.log(`${hotel.name}: ${hotelOffersData.offers[0].price.total}`);
+    //       }
+    //     }
+    //   }
+    }
+  })();
