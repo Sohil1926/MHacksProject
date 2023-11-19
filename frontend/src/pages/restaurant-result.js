@@ -135,8 +135,8 @@ export default function Page({ restaurantData }) {
       setNegPrices({ ...negPrices, [restaurant.name]: +inputValue });
     };
     return (
-      <div className='max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl'>
-        <div className='md:flex'>
+      <div className='max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-0'>
+      <div className='md:flex'>
           <div className='md:shrink-0'>
             <Image
               src={restaurant.photo}
@@ -154,19 +154,19 @@ export default function Page({ restaurantData }) {
             <p className='text-gray-500'>Rating: {restaurant.rating}</p>
             <p className='text-gray-500'>Negotiated Value: {negPrices[restaurant.name] ? `$${negPrices[restaurant.name]} per person` : 'Not yet negotiated'}</p>
             <div className='flex mt-4 space-x-3 md:mt-6'>
-              <input
+              {/* <input
                 type='text'
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder='Set Value'
                 className='border border-gray-300 p-2 rounded-lg'
-              />
-              <button
+              /> */}
+              {/* <button
                 className='px-4 py-2 text-white bg-blue-500 rounded-lg shadow'
                 onClick={storeNegValue}
               >
                 Set
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
