@@ -1,9 +1,24 @@
 'use client';
+import { useRef, useState } from 'react';
 import { Navbar } from '../components/Navbar';
 import '../app/globals.css';
 
-
 export default function CompanyDashboard() {
+  const fileInputRef = useRef(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setSelectedFile(file);
+      // Process the file or update the state as needed
+    }
+  };
+
+  const handleUploadClick = () => {
+    fileInputRef.current.click();
+  };
+
   return (
     <div className='bg-white h-full'>
       <Navbar />
@@ -16,17 +31,20 @@ export default function CompanyDashboard() {
             >
               Employee Booking dashboard
             </label>
-            <input
-              type='text'
-              id='input1'
-              className='mt-1 block w-full p-2 border border-gray-300 text-black'
-            />
           </div>
-        
-        
         </div>
-        <button className='w-full px-3 py-2 mt-4 text-white bg-black hover:bg-black font-poppins'>
-          dream.
+        <input
+          type="file"
+          ref={fileInputRef}
+          style={{ display: 'none' }}
+          accept=".csv"
+          onChange={handleFileChange}
+        />
+        <button
+          onClick={handleUploadClick}
+          className='w-full px-3 py-2 mt-4 text-white bg-black hover:bg-black font-poppins'
+        >
+          upload csv with departing locations
         </button>
       </div>
     </div>
