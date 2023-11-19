@@ -1,5 +1,6 @@
 
 import requests
+import csv
 
 def get_flight_details(fly_from, fly_to, depart_date, return_date, limit=10):
     """
@@ -55,20 +56,37 @@ def get_flight_details(fly_from, fly_to, depart_date, return_date, limit=10):
 usa_airport_codes = ["ATL", "LAX", "ORD", "DFW", "DEN", "JFK", "SFO", "SEA", "LAS", "MCO"]
 arrival_airport = "DTW"  # Arrival airport code
 # Loop through the list and check flight details
-for depart_airport in usa_airport_codes:
-    if depart_airport != arrival_airport:  # Ensure departure and arrival airports are not the same
-        flight_details = get_flight_details(depart_airport, arrival_airport, "1/12/2023", "5/12/2023", limit=1)
-        print("--------------------------------------------------")
-        print(f"Flights from {depart_airport} to {arrival_airport}:")
-        for flight in flight_details['data']:
-            print(f"Departure: {flight['cityFrom']} ({flight['flyFrom']})")
-            print(f"Arrival: {flight['cityTo']} ({flight['flyTo']})")
-            print(f"Departure Time (Local): {flight['local_departure']}")
-            print(f"Arrival Time (Local): {flight['local_arrival']}")
-            print(f"Price: {flight['price']} {flight_details['currency']}")
-            print(f"Airline: {', '.join(flight['airlines'])}")
-            print(f"Duration: Total {flight['duration']['total']} seconds")
-            print(f"Bag Limit: Hand {flight['baglimit']['hand_weight']}kg, Hold {flight['baglimit']['hold_weight']}kg")
-            print(f"Seats Available: {flight['availability']['seats']}")
-            print(f"Booking Token: {flight['booking_token']}")
-            print(f"Deep Link: {flight['deep_link']}\n")
+
+with open('flight_data.csv', 'r') as csvfile:
+    reader = csv.reader(csvfile)
+    data = list(reader)  # transforming the reader object to a list
+
+    depart_airport_idx = data[0].index('Departing Airport') 
+    arrival_airport_idx = data[0].index('Arrival Airport')
+
+    data[0].extend(['Cost', 'DeepLink'])
+
+
+   # writer.writerow(["Departure City", "Arrival City", "Departure Time (Local)", "Arrival Time (Local)", "Price", "Airline", "Deep Link"])
+
+    for row in data[1:]:  # Skip header row
+        print(row[depart_airport_idx])
+        depart_airport = row[depart_airport_idx]
+        arrival_airport = row[arrival_airport_idx]
+        if depart_airport != arrival_airport:  
+            flight_details = get_flight_details(depart_airport, arrival_airport, "1/12/2023", "5/12/2023", limit=1)
+            if 'data' in flight_details.keys() and flight_details['data']:
+                # print(type(flight_details['data'])) # list
+                # print(flight_details['data'][0])
+                flight = flight_details['data'][0]
+                row.append(flight['price'])  # append cost
+                row.append(flight['deep_link'])  # append deep_link
+            # print(flight_details['data'][0])
+            # for flight in flight_details['data']:
+            #     row.append(flight['price'])  # append cost
+            #     row.append(flight['deep_link'])  # append deep_link
+
+    # Write data back to file
+    with open('flight_data.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerows(data)
