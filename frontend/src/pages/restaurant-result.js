@@ -53,6 +53,9 @@ export async function getServerSideProps({ query }) {
 }
 export default function Page({ restaurantData }) {
   // console.log(restaurantData);
+
+  const [negPrices, setNegPrices] = React.useState({}); // { restaurantName: price } (Per person)
+
   const RestaurantCard = ({ restaurant }) => {
     const copyNegotiateEmail = () => {
       const text = `Hello ${restaurant.name}, Please give me free food for 500 people! Best Regards`;
@@ -60,6 +63,19 @@ export default function Page({ restaurantData }) {
       const blob = new Blob([text], { type });
       const data = [new ClipboardItem({ [type]: blob })];
       navigator.clipboard.write(data).then(() => alert('Copied to clipboard!'));
+    };
+    const [inputValue, setInputValue] = React.useState(''); // [restaurant.name
+    const storeNegValue = () => {
+      // check if inputValue is a number
+      if (isNaN(inputValue)) {
+        alert('Please enter a number!');
+        return;
+      }
+      if (+inputValue > negPrices[restaurant.name]) {
+        alert('You need to learn how to negotiate better!');
+        return;
+      }
+      setNegPrices({ ...negPrices, [restaurant.name]: +inputValue });
     };
     return (
       <div className='border rounded-lg p-3 w-[400px]'>
@@ -83,13 +99,35 @@ export default function Page({ restaurantData }) {
             .toLowerCase() + '@gmail.com'}
         </h1>
         <h1>Price Level: {restaurant.priceLevel}</h1>
+        <h1>
+          Currently Negotiated Value:{' '}
+          {negPrices[restaurant.name]
+            ? `\$${negPrices[restaurant.name]} per person`
+            : 'Not yet negotiated'}
+        </h1>
         <h1>Rating: {restaurant.rating}</h1>
-        <button
-          className='rounded mt-2 bg-slate-600 text-white p-3'
-          onClick={copyNegotiateEmail}
-        >
-          Negotiate
-        </button>
+
+        <div className='flex justify-between mt-5 items-center'>
+          <button
+            className='rounded mt-2 bg-slate-600 text-white p-3 mr-4'
+            onClick={copyNegotiateEmail}
+          >
+            Negotiate
+          </button>
+          <input
+            type='text'
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            placeholder='Set Value'
+            className='border rounded-full py-2 px-2 mr-2 flex-grow focus:outline-none focus:ring text-black'
+          />
+          <button
+            className='rounded-xl mt-2 bg-red-600 text-white p-3'
+            onClick={storeNegValue}
+          >
+            Set
+          </button>
+        </div>
       </div>
     );
   };

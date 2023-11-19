@@ -72,7 +72,7 @@ async function getAccessToken(clientId, clientSecret) {
       if (hotelListData) {
         for (const hotel of hotelListData.data) {
           const hotelOffersData = await getHotelOffers(accessToken, hotel.hotelId);
-          console.log(hotelOffersData.data[0].offers[0].price);
+          console.log(hotelOffersData?.data[0]?.offers[0]?.price || "No price information available");
         //   if (hotelOffersData) {
         //     console.log(hotelListData);
         //     // console.log(`${hotel.name}: ${hotelOffersData.offers[0].price.total}`);
