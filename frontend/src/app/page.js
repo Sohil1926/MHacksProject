@@ -1,6 +1,8 @@
 'use client';
 import { Navbar } from '../components/Navbar';
 import ChatBox from '@/components/Chatbox';
+import LaunchPage from './home/page'
+
 
 export default function Home() {
   return (
