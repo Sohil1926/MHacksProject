@@ -1,0 +1,11 @@
+version: '1'
+services:
+  your_app:
+    build: .
+    ports:
+      - "8000:8000"
+    env:
+    - name: OPENAI_API_KEY
+      value: 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
+    - name: ELEVEN_API_KEY
+      value: b7a769f765c2c8dc56563c7ea01d1e66
