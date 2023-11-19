@@ -7,67 +7,72 @@ import LaunchPage from './home/page'
 export default function Home() {
   return (
     <div>
-      <Navbar />
-      <div className='container mx-auto p-6'>
-        <div className='grid grid-cols-2 gap-4'>
-          <div>
-            <label
-              htmlFor='input1'
-              className='block text-sm font-medium text-black'
-            >
-              What type of event are you organizing?
-            </label>
-            <input
-              type='text'
-              id='input1'
-              className='mt-1 block w-full p-2 border border-gray-300 text-black'
-            />
-          </div>
-          <div>
-            <label
-              htmlFor='input2'
-              className='block text-sm font-medium text-black'
-            >
-              How long is the event?
-            </label>
-            <input
-              type='text'
-              id='input2'
-              className='mt-1 block w-full p-2 border border-gray-300 text-black'
-            />
-          </div>
-          <div>
-            <label
-              htmlFor='input3'
-              className='block text-sm font-medium text-black'
-            >
-              What's your total budget?
-            </label>
-            <input
-              type='text'
-              id='input3'
-              className='mt-1 block w-full p-2 border border-gray-300 text-black'
-            />
-          </div>
-          <div>
-            <label
-              htmlFor='input4'
-              className='block text-sm font-medium text-black'
-            >
-              Which city?
-            </label>
-            <input
-              type='text'
-              id='input4'
-              className='mt-1 block w-full p-2 border border-gray-300 text-black'
-            />
-          </div>
-        </div>
-        <button className='w-full px-3 py-2 mt-4 text-white bg-black hover:bg-black font-poppins'>
-          dream.
-        </button>
-        <ChatBox />
+       <LaunchPage />
+      {/* <Navbar />
+      <div className="container mx-auto p-6">
+      <h3 className="text-2xl mt-11 text-black text-left mb-6 font-bold font-poppins">Your event overview.</h3>
+
+
+      
+
+      <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400">
+          <li class="me-2">
+              <a href="#" class="inline-block px-4 py-3 text-white bg-black rounded-lg active" aria-current="page">Overview</a>
+          </li>
+          <li class="me-2">
+              <a href="#"  class="inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Venue Options</a>
+          </li>
+          <li class="me-2">
+              <a href="#" class="inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Food Quotes</a>
+          </li>
+          <li class="me-2">
+              <a href="#" class="inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Registrations</a>
+          </li>
+          <li class="me-2">
+          <a href="#" class="inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Activity Quotes</a>
+          </li>
+      </ul>
+      
+
+
       </div>
+      <div className="container mx-auto p-6">
+      <div className="mb-4">
+        <h2 className="text-2xl font-bold">Popular destinations</h2>
+        <p className="text-sm text-gray-500">Based on your location in Ann Arbor</p>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <DestinationCard 
+          title="Orlando" 
+          subtitle="Jan 20 - 27, 2024 Walt Disney World & Universal Studios"
+          imageUrl="/placeholder-image-1.png" // Replace with your image path
+        />
+        <DestinationCard 
+          title="Miami" 
+          subtitle="Dec 9 - 15 South Beach, art deco & Little Havana"
+          imageUrl="/placeholder-image-2.png" // Replace with your image path
+        />
+        <DestinationCard 
+          title="New York" 
+          subtitle="Dec 9 - 15 Statue of Liberty, skyscrapers & culture"
+          imageUrl="/placeholder-image-3.png" // Replace with your image path
+        />
+      </div>
+    </div> */}
     </div>
   );
 }
+
+
+const DestinationCard = ({ title, subtitle, imageUrl }) => {
+  return (
+    <div className="max-w-sm rounded overflow-hidden shadow-lg">
+      <img className="w-full" src={imageUrl} alt="Destination Image" />
+      <div className="px-6 py-4">
+        <div className="font-bold text-xl mb-2">{title}</div>
+        <p className="text-gray-700 text-base">{subtitle}</p>
+      </div>
+    </div>
+  );
+};
