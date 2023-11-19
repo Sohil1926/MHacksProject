@@ -3,6 +3,7 @@ import '../app/globals.css';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import ChatBox from '@/components/Chatbox';
+import Link from 'next/link';
 
 require('dotenv').config();
 const axios = require('axios');
@@ -193,12 +194,21 @@ export default function Page({ restaurantData }) {
   return (
     <>
       <div className='h-full flex flex-col justify-center items-center bg-white text-black'>
-        <h1 className='my-4 text-xl'>
-          All food providers near{' '}
-          <span className='bg-primary-gray text-white rounded-lg p-2'>
-            {query.selectedVenue || 'NA'}
-          </span>
-        </h1>
+        <div className='flex justify-around items-center relative w-full'>
+          <Link
+            href='/'
+            className='bg-primary-gray rounded text-white px-2 left-0'
+          >
+            Go Back to Dashboard
+          </Link>
+          <h1 className='text-xl my-4 text-center'>
+            All food providers near{' '}
+            <span className='bg-primary-gray text-white rounded-lg p-2'>
+              {query.selectedVenue || 'NA'}
+            </span>
+          </h1>
+        </div>
+
         <div className='relative self-stretch mx-5'>
           <select
             value={sortOption}
