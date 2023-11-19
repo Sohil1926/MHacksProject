@@ -28,8 +28,9 @@ async def get_floorplan(floorplan: str, request: Request):
     if floorplan not in ["1", "2", "3"]:
         raise HTTPException(status_code=400, detail="Invalid floorplan")
     image_path = f"./data/{floorplan}.png"
-    event_info = await request.json()
-    if len(event_info) == 0:
+    try:
+        event_info = await request.json()
+    except:
         event_info = {
             "event": "hackathon",
             "num_people": 500,
