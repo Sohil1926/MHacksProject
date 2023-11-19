@@ -1,6 +1,7 @@
 import React from 'react';
 import '../app/globals.css';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 require('dotenv').config();
 const axios = require('axios');
@@ -26,14 +27,22 @@ export async function getServerSideProps({ query }) {
     const restaurantData = [];
     for (const restaurant of restaurants.slice(0, limit)) {
       // Fetch the details for each place to get the phone number and price level
-      const detailsUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${restaurant.place_id}&fields=formatted_phone_number,price_level&key=${apiKey}`;
+      const detailsUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${restaurant.place_id}&fields=formatted_phone_number,price_level,rating,photos&key=${apiKey}`;
       const detailsResponse = await axios.get(detailsUrl);
-      const { formatted_phone_number: phoneNumber, price_level: priceLevel } =
-        detailsResponse.data.result;
+      const {
+        formatted_phone_number: phoneNumber,
+        price_level: priceLevel,
+        rating,
+        photos,
+      } = detailsResponse.data.result;
+      const photoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photos[0].photo_reference}&key=${apiKey}`;
+
       restaurantData.push({
         name: restaurant.name,
         phoneNumber,
         priceLevel: priceLevel || 'N/A',
+        rating: rating || 'N/A',
+        photo: photoUrl,
       });
     }
     return { props: { restaurantData } };
@@ -54,7 +63,17 @@ export default function Page({ restaurantData }) {
     };
     return (
       <div className='border rounded-lg p-3 w-[400px]'>
-        <h1>Name: {restaurant.name}</h1>
+        <div style={{ width: '200px', height: '200px', position: 'relative' }}>
+          <Image
+            src={restaurant.photo}
+            className='rounded-lg'
+            alt={restaurant.name + ' image'}
+            layout='fill' // This makes the image fill the container
+            objectFit='cover' // This crops the image to cover the area
+            objectPosition='center' // This centers the image within the area
+          />
+        </div>
+        <b className='my-2 text-xl'>{restaurant.name} </b>
         <h1>Phone Number: {restaurant.phoneNumber}</h1>
         <h1>
           Email:{' '}
@@ -64,6 +83,7 @@ export default function Page({ restaurantData }) {
             .toLowerCase() + '@gmail.com'}
         </h1>
         <h1>Price Level: {restaurant.priceLevel}</h1>
+        <h1>Rating: {restaurant.rating}</h1>
         <button
           className='rounded mt-2 bg-slate-600 text-white p-3'
           onClick={copyNegotiateEmail}
