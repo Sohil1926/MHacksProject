@@ -7,11 +7,13 @@ import BudgetChart from '@/components/BarChart';
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function Home() {
   const [selectedVenue, setSelectedVenue] = useState(
     '99 Grove St, San Francisco, CA 94102'
   );
+  const [latlon, setLatLon] = useState({ lat: 0, lon: 0 });
   async function getGeocoordinate(address) {
     try {
       const response = await axios.get(
@@ -38,7 +40,7 @@ export default function Home() {
   useEffect(() => {
     (async () => {
       const { lat, lon } = await getGeocoordinate(selectedVenue);
-      console.log(lat, lon);
+      setLatLon({ lat, lon });
     })();
   }, []);
   return (
@@ -49,44 +51,47 @@ export default function Home() {
           Your event overview.
         </h3>
 
-        <ul class='flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400'>
-          <li class='me-2'>
+        <ul className='flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400'>
+          <li className='me-2'>
             <a
               href='#'
-              class='inline-block px-4 py-3 text-white bg-black rounded-lg active'
+              className='inline-block px-4 py-3 text-white bg-black rounded-lg active'
               aria-current='page'
             >
               Overview
             </a>
           </li>
-          <li class='me-2'>
+          <li className='me-2'>
             <a
               href='#'
-              class='inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white'
+              className='inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white'
             >
               Venue Options
             </a>
           </li>
-          <li class='me-2'>
+          <li className='me-2'>
             <Link
-              href='/restaurant-result'
-              class='inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white'
+              href={{
+                pathname: '/restaurant-result',
+                query: { lat: latlon.lat, long: latlon.lon, selectedVenue },
+              }}
+              className='inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white'
             >
               Food Quotes
             </Link>
           </li>
-          <li class='me-2'>
+          <li className='me-2'>
             <a
               href='#'
-              class='inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white'
+              className='inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white'
             >
               Registrations
             </a>
           </li>
-          <li class='me-2'>
+          <li className='me-2'>
             <a
               href='#'
-              class='inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white'
+              className='inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white'
             >
               Activity Quotes
             </a>
