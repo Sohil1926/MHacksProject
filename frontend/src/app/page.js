@@ -4,7 +4,7 @@ import { Navbar } from '../components/Navbar';
 import BarChart from '@/components/BarChart';
 import LaunchPage from './home/page';
 import BudgetChart from '@/components/BarChart';
-
+import EventSchedule from '@/components/EventSchedule';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -12,6 +12,22 @@ export default function Home() {
   const [selectedVenue, setSelectedVenue] = useState(
     '99 Grove St, San Francisco, CA 94102'
   );
+
+
+  const scheduleData = [
+    {
+      title: 'Broken Glass Everywhere',
+      time: '9:00 - 10:00',
+      tag: 'Meeting',
+      location: 'Room 101',
+      date: '2023-11-19',
+      description: 'Discuss the recent issues with facility maintenance.',
+    },
+    // ... other events
+  ];
+  
+  
+
   async function getGeocoordinate(address) {
     try {
       const response = await axios.get(
@@ -95,6 +111,16 @@ export default function Home() {
         <div className='mt-6 w-full md:w-3/4 lg:w-1/2 xl:w-1/3 2xl:w-1/4'>
           <BudgetChart />
         </div>
+
+        <div className='mt-6 w-full'>
+  <h3 className='text-2xl mt-11 text-black text-left mb-6 font-bold font-poppins'>
+    Schedule
+  </h3>
+  <EventSchedule schedule={scheduleData} />
+</div>
+
+       
+        
       </div>
       <div className='container mx-auto p-6'>
         <div className='mb-4'>
