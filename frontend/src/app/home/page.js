@@ -79,7 +79,7 @@ export default function LaunchPage() {
                 htmlFor='input2'
                 className='text-sm font-medium text-black'
               >
-                How Many Attendees?
+                How many attendees?
               </label>
             </div>
             <input
@@ -97,8 +97,7 @@ export default function LaunchPage() {
                 htmlFor='input3'
                 className='text-sm font-medium text-black'
               >
-                How long is the event?
-              </label>
+Event start date?              </label>
             </div>
             <DatePicker
               classNames='mt-4'
@@ -116,7 +115,7 @@ export default function LaunchPage() {
                 htmlFor='input4'
                 className='text-sm font-medium text-black'
               >
-                How long is the event?
+                Event end date?
               </label>
             </div>
             <DatePicker
