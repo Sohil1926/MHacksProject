@@ -45,5 +45,15 @@ export default function Page() {
     },
     // ... other events
   ];
-  return <EventSchedule schedule={scheduleData} />;
+  return (
+    <>
+      <Navbar />
+      <div className='mt-6 w-full'>
+        <h3 className='text-2xl mt-11 text-black text-left mb-6 font-bold font-poppins'>
+          Schedule
+        </h3>
+        <EventSchedule schedule={scheduleData} />
+      </div>
+    </>
+  );
 }
