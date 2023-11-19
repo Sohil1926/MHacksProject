@@ -55,15 +55,6 @@ export default function VenueOptions() {
         <ul class='flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400'>
           <li class='me-2'>
             <a
-              href='/overview'
-              class='inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white'
-              aria-current='page'
-            >
-              Overview
-            </a>
-          </li>
-          <li class='me-2'>
-            <a
               href='#'
               class='inline-block px-4 py-3 text-white bg-primary-gray rounded-lg active'
               aria-current='page'
@@ -100,8 +91,12 @@ export default function VenueOptions() {
           </li>
         </ul>
 
-        <a
-          onClick={changeVenue('1 Fort Mason San Francisco, CA 94123')}
+        <Link
+          onClick={() => changeVenue('1 Fort Mason San Francisco, CA 94123')}
+          href={{
+            pathname: '/restaurant-result',
+            query: { lat: latlon.lat, long: latlon.lon, selectedVenue },
+          }}
           class='mt-10 flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700'
         >
           <img
@@ -117,10 +112,14 @@ export default function VenueOptions() {
               1 Fort Mason San Francisco, CA 94123 <br /> Capacity: 400
             </p>
           </div>
-        </a>
+        </Link>
 
-        <a
-          onClick={changeVenue('99 Grove St, San Francisco, CA 94102')}
+        <Link
+          onClick={() => changeVenue('99 Grove St, San Francisco, CA 94102')}
+          href={{
+            pathname: '/restaurant-result',
+            query: { lat: latlon.lat, long: latlon.lon, selectedVenue },
+          }}
           class='mt-10 flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700'
         >
           <img
@@ -136,10 +135,14 @@ export default function VenueOptions() {
               99 Grove St, San Francisco, CA 94102 <br /> Capacity: 8,500
             </p>
           </div>
-        </a>
+        </Link>
 
         <a
-          onClick={changeVenue('2222 Broadway San Francisco, CA 94115')}
+          onClick={() => changeVenue('2222 Broadway San Francisco, CA 94115')}
+          href={{
+            pathname: '/restaurant-result',
+            query: { lat: latlon.lat, long: latlon.lon, selectedVenue },
+          }}
           class='mt-10 flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700'
         >
           <img

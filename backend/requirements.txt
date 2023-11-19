@@ -1,0 +1,8 @@
+opencv-python
+uvicorn
+fastapi
+elevenlabs
+easyocr
+langchain
+openai
+python-dotenv

@@ -122,8 +122,8 @@ export default function LaunchPage() {
             <DatePicker
               classNames='mt-4'
               options={options}
-              show={show}
-              setShow={handleClose}
+              show={landingShow}
+              setShow={handleLandingClose}
             />
           </div>
           <div className=' p-3 bg-white rounded'>
