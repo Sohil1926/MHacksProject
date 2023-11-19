@@ -7,6 +7,7 @@ import BudgetChart from '@/components/BarChart';
 import EventSchedule from '@/components/EventSchedule';
 import Overview from './overview/page';
 import VenueOptions from '@/app/venue/page';
+import axios from 'axios';
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -15,7 +16,7 @@ export default function Home() {
   const [selectedVenue, setSelectedVenue] = useState(
     '99 Grove St, San Francisco, CA 94102'
   );
-
+  const [longlat, setLonglat] = useState({ lat: 0, lon: 0 });
 
   const scheduleData = [
     {
@@ -36,8 +37,6 @@ export default function Home() {
     },
     // ... other events
   ];
-  
-  
 
   async function getGeocoordinate(address) {
     try {
@@ -65,7 +64,8 @@ export default function Home() {
   useEffect(() => {
     (async () => {
       const { lat, lon } = await getGeocoordinate(selectedVenue);
-      console.log(lat, lon);
+      setLonglat({ lat, lon });
+      // console.log(lat, lon);
     })();
   }, []);
   return (
@@ -80,7 +80,7 @@ export default function Home() {
           <li className='me-2'>
             <a
               href='#'
-              className='inline-block px-4 py-3 text-white bg-black rounded-lg active'
+              className='inline-block px-4 py-3 text-white bg-primary-gray rounded-lg active'
               aria-current='page'
             >
               Overview
@@ -96,7 +96,10 @@ export default function Home() {
           </li>
           <li className='me-2'>
             <Link
-              href='/restaurant-result'
+              href={{
+                pathname: '/restaurant-result',
+                query: { lat: longlat.lat, long: longlat.lon, selectedVenue },
+              }}
               className='inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white'
             >
               Food Quotes
@@ -124,14 +127,11 @@ export default function Home() {
         </div>
 
         <div className='mt-6 w-full'>
-  <h3 className='text-2xl mt-11 text-black text-left mb-6 font-bold font-poppins'>
-    Schedule
-  </h3>
-  <EventSchedule schedule={scheduleData} />
-</div>
-
-       
-        
+          <h3 className='text-2xl mt-11 text-black text-left mb-6 font-bold font-poppins'>
+            Schedule
+          </h3>
+          <EventSchedule schedule={scheduleData} />
+        </div>
       </div>
       {/* <div className='container mx-auto p-6'>
         <div className='mb-4'>

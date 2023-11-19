@@ -135,7 +135,7 @@ export default function Page({ restaurantData }) {
       setNegPrices({ ...negPrices, [restaurant.name]: +inputValue });
     };
     return (
-      <div className='border rounded-lg p-3 w-[400px]'>
+      <div className='border rounded-lg p-3 w-[400px] shadow-md'>
         <div style={{ width: '200px', height: '200px', position: 'relative' }}>
           <Image
             src={restaurant.photo}
@@ -237,7 +237,7 @@ export default function Page({ restaurantData }) {
             </svg>
           </div>
         </div>
-        <div className='grid grid-cols-3 gap-5 p-3'>
+        <div className='grid grid-cols-3 border w-full gap-5 p-3 flex-wrap'>
           {sortOption === 'default' &&
             restaurantData?.map((restaurant, i) => (
               <RestaurantCard key={i} restaurant={restaurant} />
