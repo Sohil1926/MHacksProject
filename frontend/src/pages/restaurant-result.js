@@ -177,12 +177,9 @@ export default function Page({ restaurantData }) {
     <>
       <div className='h-full flex flex-col justify-center items-center bg-white text-black'>
         <div className='flex justify-around items-center relative w-full'>
-          <Link
-            href='/'
-            className='bg-primary-gray rounded text-white px-2 left-0'
-          >
-            Go Back to Dashboard
-          </Link>
+        <Link href='/' className='bg-black rounded text-white px-2 flex items-center'>
+  Go Back to Dashboard
+</Link>
           <h1 className='text-xl my-4 text-center'>
             All food providers near{' '}
             <span className='bg-primary-gray text-white rounded-lg p-2'>
