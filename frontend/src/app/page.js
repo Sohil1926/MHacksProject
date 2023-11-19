@@ -6,7 +6,6 @@ import LaunchPage from './home/page'
 import BudgetChart from '@/components/BarChart';
 
 
-
 export default function Home() {
   return (
     <div>
@@ -26,9 +25,6 @@ export default function Home() {
           </li>
           <li class="me-2">
               <a href="#" class="inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Food Quotes</a>
-          </li>
-          <li class="me-2">
-              <a href="#" class="inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Registrations</a>
           </li>
           <li class="me-2">
           <a href="#" class="inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Activity Quotes</a>
