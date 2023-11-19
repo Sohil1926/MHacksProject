@@ -81,10 +81,6 @@ with open('flight_data.csv', 'r') as csvfile:
                 flight = flight_details['data'][0]
                 row.append(flight['price'])  # append cost
                 row.append(flight['deep_link'])  # append deep_link
-            # print(flight_details['data'][0])
-            # for flight in flight_details['data']:
-            #     row.append(flight['price'])  # append cost
-            #     row.append(flight['deep_link'])  # append deep_link
 
     # Write data back to file
     with open('flight_data.csv', 'w', newline='') as csvfile:
