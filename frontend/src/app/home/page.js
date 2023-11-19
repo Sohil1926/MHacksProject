@@ -79,7 +79,7 @@ export default function LaunchPage() {
                 htmlFor='input2'
                 className='text-sm font-medium text-black'
               >
-                How Many Attendees?
+                How many attendees?
               </label>
             </div>
             <input
@@ -97,8 +97,7 @@ export default function LaunchPage() {
                 htmlFor='input3'
                 className='text-sm font-medium text-black'
               >
-                How long is the event?
-              </label>
+Event start date?              </label>
             </div>
             <DatePicker
               classNames='mt-4'
@@ -116,7 +115,7 @@ export default function LaunchPage() {
                 htmlFor='input4'
                 className='text-sm font-medium text-black'
               >
-                How long is the event?
+                Event end date?
               </label>
             </div>
             <DatePicker
@@ -163,9 +162,11 @@ export default function LaunchPage() {
             />
           </div>
         </div>
-        <button className='w-full px-3 h-[100px] py-2 mt-4 text-white bg-primary-gray font-poppins rounded-lg shadow-lg transition-colors duration-300'>
-          dream big.
-        </button>
+        <a href="http://localhost:3000/venue">
+  <button className='w-full px-3 h-[100px] py-2 mt-4 text-white bg-primary-gray font-poppins rounded-lg shadow-lg transition-colors duration-300'>
+    dream big.
+  </button>
+</a>
       </div>
     </div>
   );
