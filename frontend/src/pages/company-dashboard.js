@@ -209,6 +209,20 @@ export default function CompanyDashboard() {
             </tbody>
           </table>
         </div>
+        <div className='flex justify-end mt-4 space-x-2'>
+          <button
+            // onClick={handleBookFlights}
+            className='px-4 py-2 text-white bg-blue-500 hover:bg-blue-700 font-semibold rounded'
+          >
+            Book Flights
+          </button>
+          <button
+            // onClick={handleBookHotels}
+            className='px-4 py-2 text-white bg-green-500 hover:bg-green-700 font-semibold rounded'
+          >
+            Book Hotels
+          </button>
+        </div>
       </div>
     </div>
   );
