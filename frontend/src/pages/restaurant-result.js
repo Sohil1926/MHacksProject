@@ -135,59 +135,41 @@ export default function Page({ restaurantData }) {
       setNegPrices({ ...negPrices, [restaurant.name]: +inputValue });
     };
     return (
-      <div className='border rounded-lg p-3 w-[400px] shadow-md'>
-        <div style={{ width: '200px', height: '200px', position: 'relative' }}>
-          <Image
-            src={restaurant.photo}
-            className='rounded-lg'
-            alt={restaurant.name + ' image'}
-            layout='fill' // This makes the image fill the container
-            objectFit='cover' // This crops the image to cover the area
-            objectPosition='center' // This centers the image within the area
-          />
+      <div className='max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-0'>
+      <div className='md:flex'>
+          <div className='md:shrink-0'>
+            <Image
+              src={restaurant.photo}
+              alt={`${restaurant.name} image`}
+              width={384} // Adjust the size accordingly
+              height={256} // Adjust the size accordingly
+              className='object-cover md:w-full'
+            />
+          </div>
+          <div className='p-8'>
+            <div className='uppercase tracking-wide text-sm text-indigo-500 font-semibold'>{restaurant.name}</div>
+            <p className='mt-2 text-gray-500'>Phone: {restaurant.phoneNumber}</p>
+            <p className='text-gray-500'>Email: {restaurant.name+"@gmail.com"}</p>
+            <p className='text-gray-500'>Price Level: {restaurant.priceLevel}</p>
+            <p className='text-gray-500'>Rating: {restaurant.rating}</p>
+            <p className='text-gray-500'>Negotiated Value: {negPrices[restaurant.name] ? `$${negPrices[restaurant.name]} per person` : 'Not yet negotiated'}</p>
+            <div className='flex mt-4 space-x-3 md:mt-6'>
+              {/* <input
+                type='text'
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                placeholder='Set Value'
+                className='border border-gray-300 p-2 rounded-lg'
+              /> */}
+              {/* <button
+                className='px-4 py-2 text-white bg-blue-500 rounded-lg shadow'
+                onClick={storeNegValue}
+              >
+                Set
+              </button> */}
+            </div>
+          </div>
         </div>
-        <b className='my-2 text-xl'>{restaurant.name} </b>
-        <h1>Phone Number: {restaurant.phoneNumber}</h1>
-        <h1>
-          Email:{' '}
-          {restaurant.name
-            .replace(/ /g, '')
-            .replace(/[^a-zA-Z0-9]/g, '')
-            .toLowerCase() + '@gmail.com'}
-        </h1>
-        <h1>Price Level: {restaurant.priceLevel}</h1>
-        <h1>
-          Currently Negotiated Value:{' '}
-          {negPrices[restaurant.name]
-            ? `\$${negPrices[restaurant.name]} per person`
-            : 'Not yet negotiated'}
-        </h1>
-        <h1>Rating: {restaurant.rating}</h1>
-
-        <div className='flex justify-between mt-5 items-center'>
-          <button
-            className='rounded mt-2 bg-slate-600 text-white p-3 mr-4'
-            onClick={copyNegotiateEmail}
-          >
-            Negotiate
-          </button>
-          <input
-            type='text'
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            placeholder='Set Value'
-            className='border rounded-full py-2 px-2 mr-2 flex-grow focus:outline-none focus:ring text-black'
-          />
-          <button
-            className='rounded-xl mt-2 bg-red-600 text-white p-3'
-            onClick={storeNegValue}
-          >
-            Set
-          </button>
-        </div>
-        {openChatBox && (
-          <ChatBox defaultMsg={defaultChatMsg} closeControl={setOpenChatBox} />
-        )}
       </div>
     );
   };
@@ -195,12 +177,9 @@ export default function Page({ restaurantData }) {
     <>
       <div className='h-full flex flex-col justify-center items-center bg-white text-black'>
         <div className='flex justify-around items-center relative w-full'>
-          <Link
-            href='/'
-            className='bg-primary-gray rounded text-white px-2 left-0'
-          >
-            Go Back to Dashboard
-          </Link>
+        <Link href='/' className='bg-black rounded text-white px-2 flex items-center'>
+  Go Back to Dashboard
+</Link>
           <h1 className='text-xl my-4 text-center'>
             All food providers near{' '}
             <span className='bg-primary-gray text-white rounded-lg p-2'>
@@ -236,8 +215,12 @@ export default function Page({ restaurantData }) {
               <path d='M5.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.576 0 0.436 0.445 0.408 1.197 0 1.615l-4.576 4.307c-0.268 0.272-0.701 0.349-1.076 0l-4.576-4.307c-0.408-0.418-0.436-1.17 0-1.615z' />
             </svg>
           </div>
+          <button   className='mt-5 bg-black rounded-md text-white px-4 py-2 transition duration-300 ease-in-out transform hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black'
+>negotiate</button>
+
         </div>
-        <div className='grid grid-cols-3 border w-full gap-5 p-3 flex-wrap'>
+
+        <div className='grid grid-cols-3 border w-full gap-y-5 gap-x- p-3 flex-wrap'>
           {sortOption === 'default' &&
             restaurantData?.map((restaurant, i) => (
               <RestaurantCard key={i} restaurant={restaurant} />
