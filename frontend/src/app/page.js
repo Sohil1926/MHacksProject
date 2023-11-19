@@ -5,6 +5,9 @@ import BarChart from '@/components/BarChart';
 import LaunchPage from './home/page';
 import BudgetChart from '@/components/BarChart';
 import EventSchedule from '@/components/EventSchedule';
+import Overview from './overview/page';
+import VenueOptions from '@/app/venue/page';
+
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -130,7 +133,7 @@ export default function Home() {
        
         
       </div>
-      <div className='container mx-auto p-6'>
+      {/* <div className='container mx-auto p-6'>
         <div className='mb-4'>
           <h2 className='text-2xl font-bold'>Popular destinations</h2>
           <p className='text-sm text-gray-500'>
@@ -155,19 +158,7 @@ export default function Home() {
             imageUrl='/placeholder-image-3.png' // Replace with your image path
           />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
-
-const DestinationCard = ({ title, subtitle, imageUrl }) => {
-  return (
-    <div className='max-w-sm rounded overflow-hidden shadow-lg'>
-      <img className='w-full' src={imageUrl} alt='Destination Image' />
-      <div className='px-6 py-4'>
-        <div className='font-bold text-xl mb-2'>{title}</div>
-        <p className='text-gray-700 text-base'>{subtitle}</p>
-      </div>
-    </div>
-  );
-};

@@ -33,10 +33,15 @@ const options = {
 
 export default function LaunchPage() {
   const [show, setShow] = useState(false);
+    const [landingShow, setLandingShow] = useState(false);
 
   const handleClose = () => {
     setShow(!show);
   };
+
+    const handleLandingClose = () => {
+        setLandingShow(!landingShow)
+    }
 
   return (
     <div>
