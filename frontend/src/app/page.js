@@ -55,7 +55,7 @@ export default function Home() {
           <li className='me-2'>
             <a
               href='#'
-              className='inline-block px-4 py-3 text-white bg-black rounded-lg active'
+              className='inline-block px-4 py-3 text-white bg-primary-gray rounded-lg active'
               aria-current='page'
             >
               Overview
