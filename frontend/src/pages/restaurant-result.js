@@ -71,6 +71,10 @@ export default function Page({ restaurantData }) {
         alert('Please enter a number!');
         return;
       }
+      if (+inputValue > negPrices[restaurant.name]) {
+        alert('You need to learn how to negotiate better!');
+        return;
+      }
       setNegPrices({ ...negPrices, [restaurant.name]: +inputValue });
     };
     return (
