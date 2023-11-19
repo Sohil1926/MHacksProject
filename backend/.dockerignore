@@ -1,0 +1,8 @@
+__pycache__/
+test*
+.vscode
+venv
+env
+.vscode
+api_test
+app
