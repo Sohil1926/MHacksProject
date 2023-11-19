@@ -13,64 +13,65 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function Home() {
-  const [selectedVenue, setSelectedVenue] = useState(
-    '99 Grove St, San Francisco, CA 94102'
-  );
-  const [longlat, setLonglat] = useState({ lat: 0, lon: 0 });
+  // const [selectedVenue, setSelectedVenue] = useState(
+  //   '99 Grove St, San Francisco, CA 94102'
+  // );
+  // const [longlat, setLonglat] = useState({ lat: 0, lon: 0 });
 
-  const scheduleData = [
-    {
-      title: 'Broken Glass Everywhere',
-      time: '9:00 - 10:00',
-      tag: 'Meeting',
-      location: 'Room 101',
-      date: '2023-11-19',
-      description: 'Discuss the recent issues with facility maintenance.',
-    },
-    {
-      title: 'Broken Glass Everywhere',
-      time: '8:00 - 10:00',
-      tag: 'Meeting',
-      location: 'Room 101',
-      date: '2023-11-19',
-      description: 'Discuss the recent issues with facility maintenance.',
-    },
-    // ... other events
-  ];
+  // const scheduleData = [
+  //   {
+  //     title: 'Broken Glass Everywhere',
+  //     time: '9:00 - 10:00',
+  //     tag: 'Meeting',
+  //     location: 'Room 101',
+  //     date: '2023-11-19',
+  //     description: 'Discuss the recent issues with facility maintenance.',
+  //   },
+  //   {
+  //     title: 'Broken Glass Everywhere',
+  //     time: '8:00 - 10:00',
+  //     tag: 'Meeting',
+  //     location: 'Room 101',
+  //     date: '2023-11-19',
+  //     description: 'Discuss the recent issues with facility maintenance.',
+  //   },
+  //   // ... other events
+  // ];
 
-  async function getGeocoordinate(address) {
-    try {
-      const response = await axios.get(
-        'https://nominatim.openstreetmap.org/search',
-        {
-          params: {
-            format: 'json',
-            q: address,
-          },
-        }
-      );
+  // async function getGeocoordinate(address) {
+  //   try {
+  //     const response = await axios.get(
+  //       'https://nominatim.openstreetmap.org/search',
+  //       {
+  //         params: {
+  //           format: 'json',
+  //           q: address,
+  //         },
+  //       }
+  //     );
 
-      if (response.data && response.data.length > 0) {
-        const { lat, lon } = response.data[0];
-        return { lat, lon };
-      } else {
-        return { error: 'No results found' };
-      }
-    } catch (error) {
-      console.error(error);
-      return { error: 'No results found' };
-    }
-  }
-  useEffect(() => {
-    (async () => {
-      const { lat, lon } = await getGeocoordinate(selectedVenue);
-      setLonglat({ lat, lon });
-      // console.log(lat, lon);
-    })();
-  }, []);
+  //     if (response.data && response.data.length > 0) {
+  //       const { lat, lon } = response.data[0];
+  //       return { lat, lon };
+  //     } else {
+  //       return { error: 'No results found' };
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //     return { error: 'No results found' };
+  //   }
+  // }
+  // useEffect(() => {
+  //   (async () => {
+  //     const { lat, lon } = await getGeocoordinate(selectedVenue);
+  //     setLonglat({ lat, lon });
+  //     // console.log(lat, lon);
+  //   })();
+  // }, []);
   return (
     <div>
-      <Navbar />
+      <LaunchPage />
+      {/* <Navbar />
       <div className='container mx-auto p-6'>
         <h3 className='text-2xl mt-11 text-black text-left mb-6 font-bold font-poppins'>
           Your event overview.
@@ -133,7 +134,7 @@ export default function Home() {
           <EventSchedule schedule={scheduleData} />
         </div>
       </div>
-      {/* <div className='container mx-auto p-6'>
+       <div className='container mx-auto p-6'>
         <div className='mb-4'>
           <h2 className='text-2xl font-bold'>Popular destinations</h2>
           <p className='text-sm text-gray-500'>
