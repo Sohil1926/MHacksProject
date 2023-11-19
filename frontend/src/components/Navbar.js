@@ -11,7 +11,7 @@ export const Navbar = () => {
                     </a>
                 </div>
                 <div className="flex w-full md:w-1/2 justify-center md:justify-end text-black">
-                    <a href="http://localhost:3001/company-dashboard">
+                    <a href="http://localhost:3000/company-dashboard">
                         <button className="px-4 py-2 bg-black text-white rounded hover:bg-gray-700">
                             for companies
                         </button>

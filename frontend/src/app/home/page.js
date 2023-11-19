@@ -162,9 +162,11 @@ Event start date?              </label>
             />
           </div>
         </div>
-        <button className='w-full px-3 h-[100px] py-2 mt-4 text-white bg-primary-gray font-poppins rounded-lg shadow-lg transition-colors duration-300'>
-          dream big.
-        </button>
+        <a href="http://localhost:3000/venue">
+  <button className='w-full px-3 h-[100px] py-2 mt-4 text-white bg-primary-gray font-poppins rounded-lg shadow-lg transition-colors duration-300'>
+    dream big.
+  </button>
+</a>
       </div>
     </div>
   );
