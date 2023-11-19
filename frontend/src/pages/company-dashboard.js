@@ -5,11 +5,19 @@ import { Navbar } from '../components/Navbar';
 import '../app/globals.css';
 require('dotenv').config();
 const axios = require('axios');
+import { roundTo } from 'round-to';
 
 export default function CompanyDashboard() {
   '';
   const fileInputRef = useRef(null);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const ticketTierClass = {
+    High: 'bg-red-700',
+    Medium: 'bg-orange-500',
+    Low: 'bg-green-500',
+  };
 
   const getFlightDetails = async (
     fly_from,
@@ -53,6 +61,10 @@ export default function CompanyDashboard() {
     }
   };
 
+  const getHotelDetails = async (dest) => {
+    return Math.floor(Math.random() * (160 - 120 + 1) + 120);
+  };
+
   function downloadUpdatedCsv(updatedCsv) {
     const blob = new Blob([updatedCsv], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
@@ -77,29 +89,24 @@ export default function CompanyDashboard() {
     */
 
     // const response = await ;
-    // console.log(process.env.KIWI_API_KEY);
     const result = await getFlightDetails(
       rowData['Departing Airport'],
       rowData['Arrival Airport'],
       '01/12/2023',
       '15/12/2023'
     );
-
-    return [result?.data[0]?.['price'], result?.data[0]?.['deep_link']];
+    const hotelPrice = await getHotelDetails(rowData['Arrival Airport']);
+    return [
+      hotelPrice,
+      result?.data[0]?.['price'],
+      result?.data[0]?.['deep_link'],
+    ];
+    // return [6, 9, google];
     // return [result?.data[0]['price'], result?.data[0]['deep_link']]; // Assuming the API returns the new data to be added to the CSV
   }
 
   // Mock data for the table
-  const mockData = [
-    {
-      departLocation: 'Sedaparlocation',
-      employee: 'Jeff Jonas',
-      flightPrice: '$201.11',
-      hotelPrice: '$728.19',
-      ticketTier: 'High',
-    },
-    // ... add more rows as needed
-  ];
+  const [mockData, setMockData] = useState([]);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -112,20 +119,44 @@ export default function CompanyDashboard() {
     if (!selectedFile) return;
     Papa.parse(selectedFile, {
       header: true,
+      beforeFirstChunk: (chunk) => {
+        // setLoading(true);
+      },
       complete: async (results) => {
+        setLoading(true);
+
         const updatedRows = await Promise.all(
           results.data.map(async (row) => {
             const apiResult = await callApiWithRowData(row);
             return {
               ...row,
-              Cost: apiResult[0] || 'N/A',
-              'Purchase Link': apiResult[1] || 'N/A',
+              hotelCost: apiResult[0],
+              flightCost: apiResult[1] || 'N/A',
+              'Purchase Link': apiResult[2] || 'N/A',
             };
           })
         );
         // Now `updatedRows` contains the original data plus the new column from the API call
+        // console.log(updatedRows);
+        let newData = updatedRows.map((row) => {
+          return {
+            departLocation: row['Departing Airport'],
+            employee: row['Employee'],
+            flightPrice: '$' + row['flightCost'],
+            hotelPrice: '$' + roundTo(row['hotelCost'], 2),
+            ticketTier: row['Ticket Level'],
+          };
+        });
+
+        // console.log(newData[0]);
+
+        // Now update the state with the new array
+        setMockData([...newData]);
+
         const updatedCsv = Papa.unparse(updatedRows);
         downloadUpdatedCsv(updatedCsv);
+
+        setLoading(false);
       },
     });
   }, [selectedFile]);
@@ -144,10 +175,15 @@ export default function CompanyDashboard() {
               htmlFor='input1'
               className='block text-xl font-medium text-black'
             >
-              Employee Booking dashboard
+              Employee Booking Dashboard
             </label>
           </div>
         </div>
+        {loading && (
+          <h1 className='text-black text-lg'>
+            Loading, this will be done in a minute...
+          </h1>
+        )}
         <input
           type='file'
           ref={fileInputRef}
@@ -200,7 +236,11 @@ export default function CompanyDashboard() {
                     {data.hotelPrice}
                   </td>
                   <td className='px-6 py-4 whitespace-nowrap'>
-                    <span className='px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800'>
+                    <span
+                      className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                        ticketTierClass[data.ticketTier]
+                      }`}
+                    >
                       {data.ticketTier}
                     </span>
                   </td>
