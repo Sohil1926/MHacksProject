@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { format, addDays, isSameDay, parseISO } from 'date-fns';
 
 const EventSchedule = ({ schedule }) => {
+  if (schedule.length === 0) return;
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const goToPreviousDay = () => {

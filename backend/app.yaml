@@ -1,0 +1,6 @@
+runtime: python38
+entrypoint: uvicorn main:app --host 0.0.0.0 --port $PORT --timeout-keep-alive 500
+
+env_variables:
+  OPENAI_API_KEY: "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"
+  ELEVEN_API_KEY: "b7a769f765c2c8dc56563c7ea01d1e66"

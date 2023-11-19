@@ -71,7 +71,7 @@ def call_gpt(image_path, event_info):
     )
 
     response_content = response.choices[0].message.content
-
+    print(response_content)
     extracted_json = find_json_array(response_content)
     return extracted_json
 

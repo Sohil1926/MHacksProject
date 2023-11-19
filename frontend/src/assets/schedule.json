@@ -1,0 +1,87 @@
+{
+    "schedule": [
+      {
+        "day": "2023-11-18",
+        "activities": [
+          {
+            "name": "Welcome Breakfast and Introduction",
+            "start_time": "8:00",
+            "end_time": "9:30",
+            "room": "18"
+          },
+          {
+            "name": "Ice Breaker Activities",
+            "start_time": "9:45",
+            "end_time": "11:00",
+            "room": "16"
+          },
+          {
+            "name": "Group Photo & Memory Sharing",
+            "start_time": "11:15",
+            "end_time": "12:30",
+            "room": "14"
+          },
+          {
+            "name": "Lunch and Socializing",
+            "start_time": "12:45",
+            "end_time": "14:00",
+            "room": "15"
+          },
+          {
+            "name": "Birthday Celebration & Cake Cutting",
+            "start_time": "14:30",
+            "end_time": "15:30",
+            "room": "10"
+          },
+          {
+            "name": "Entertainment & Performances",
+            "start_time": "15:45",
+            "end_time": "17:00",
+            "room": "11"
+          }
+        ]
+      },
+      {
+        "day": "2023-11-19",
+        "activities": [
+          {
+            "name": "Morning Yoga and Relaxation",
+            "start_time": "8:00",
+            "end_time": "9:00",
+            "room": "9"
+          },
+          {
+            "name": "Crafts and Creative Workshops",
+            "start_time": "9:15",
+            "end_time": "10:30",
+            "room": "8"
+          },
+          {
+            "name": "Treasure Hunt Game",
+            "start_time": "10:45",
+            "end_time": "12:00",
+            "room": "7"
+          },
+          {
+            "name": "Lunch and Networking",
+            "start_time": "12:15",
+            "end_time": "13:45",
+            "room": "15"
+          },
+          {
+            "name": "Dance Workshop",
+            "start_time": "14:00",
+            "end_time": "15:00",
+            "room": "16"
+          },
+          {
+            "name": "Closing Ceremony and Farewell",
+            "start_time": "15:30",
+            "end_time": "17:00",
+            "room": "18"
+          }
+        ]
+      }
+    ],
+    "floorplan": "backend/output/1.png"
+  }
