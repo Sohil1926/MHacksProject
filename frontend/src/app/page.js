@@ -23,6 +23,14 @@ export default function Home() {
       date: '2023-11-19',
       description: 'Discuss the recent issues with facility maintenance.',
     },
+    {
+      title: 'Broken Glass Everywhere',
+      time: '8:00 - 10:00',
+      tag: 'Meeting',
+      location: 'Room 101',
+      date: '2023-11-19',
+      description: 'Discuss the recent issues with facility maintenance.',
+    },
     // ... other events
   ];
   
@@ -65,44 +73,44 @@ export default function Home() {
           Your event overview.
         </h3>
 
-        <ul class='flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400'>
-          <li class='me-2'>
+        <ul className='flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400'>
+          <li className='me-2'>
             <a
               href='#'
-              class='inline-block px-4 py-3 text-white bg-black rounded-lg active'
+              className='inline-block px-4 py-3 text-white bg-black rounded-lg active'
               aria-current='page'
             >
               Overview
             </a>
           </li>
-          <li class='me-2'>
+          <li className='me-2'>
             <a
               href='#'
-              class='inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white'
+              className='inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white'
             >
               Venue Options
             </a>
           </li>
-          <li class='me-2'>
+          <li className='me-2'>
             <Link
               href='/restaurant-result'
-              class='inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white'
+              className='inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white'
             >
               Food Quotes
             </Link>
           </li>
-          <li class='me-2'>
+          <li className='me-2'>
             <a
               href='#'
-              class='inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white'
+              className='inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white'
             >
               Registrations
             </a>
           </li>
-          <li class='me-2'>
+          <li className='me-2'>
             <a
               href='#'
-              class='inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white'
+              className='inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white'
             >
               Activity Quotes
             </a>

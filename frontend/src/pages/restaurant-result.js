@@ -3,6 +3,7 @@ import '../app/globals.css';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import ChatBox from '@/components/Chatbox';
+import Link from 'next/link';
 
 require('dotenv').config();
 const axios = require('axios');
@@ -17,6 +18,7 @@ export async function getServerSideProps({ query }) {
     const apiKey = process.env.GOOGLE_API_KEY;
     // const location = `42.29190150805537, -83.71369867218539`; // Use the lat,long of your desired location
     const location = `${lat}, ${long}`; // Use the lat,long of your desired location
+
     const radius = 1500; // Search within this radius in meters
     const type = 'restaurant';
     const keyword = 'restaurant';
@@ -30,17 +32,21 @@ export async function getServerSideProps({ query }) {
       // Fetch the details for each place to get the phone number and price level
       const detailsUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${restaurant.place_id}&fields=formatted_phone_number,price_level,rating,photos&key=${apiKey}`;
       const detailsResponse = await axios.get(detailsUrl);
+      if (detailsResponse.data.result === undefined) continue;
       const {
         formatted_phone_number: phoneNumber,
         price_level: priceLevel,
         rating,
         photos,
       } = detailsResponse.data.result;
-      const photoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photos[0].photo_reference}&key=${apiKey}`;
+      const photoUrl =
+        photos && photos[0].photo_reference
+          ? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photos[0].photo_reference}&key=${apiKey}`
+          : 'https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found.jpg';
 
       restaurantData.push({
-        name: restaurant.name,
-        phoneNumber,
+        name: restaurant?.name || 'NA',
+        phoneNumber: phoneNumber || 'N/A',
         priceLevel: priceLevel || 'N/A',
         rating: rating || 'N/A',
         photo: photoUrl,
@@ -54,7 +60,8 @@ export async function getServerSideProps({ query }) {
 }
 export default function Page({ restaurantData }) {
   // console.log(restaurantData);
-
+  const router = useRouter();
+  const { query } = router;
   const [negPrices, setNegPrices] = React.useState({}); // { restaurantName: price } (Per person)
   const [openChatBox, setOpenChatBox] = React.useState(false);
   const [defaultChatMsg, setDefaultChatMsg] = React.useState('');
@@ -187,6 +194,21 @@ export default function Page({ restaurantData }) {
   return (
     <>
       <div className='h-full flex flex-col justify-center items-center bg-white text-black'>
+        <div className='flex justify-around items-center relative w-full'>
+          <Link
+            href='/'
+            className='bg-primary-gray rounded text-white px-2 left-0'
+          >
+            Go Back to Dashboard
+          </Link>
+          <h1 className='text-xl my-4 text-center'>
+            All food providers near{' '}
+            <span className='bg-primary-gray text-white rounded-lg p-2'>
+              {query.selectedVenue || 'NA'}
+            </span>
+          </h1>
+        </div>
+
         <div className='relative self-stretch mx-5'>
           <select
             value={sortOption}
