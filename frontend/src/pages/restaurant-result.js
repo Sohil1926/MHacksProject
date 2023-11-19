@@ -149,7 +149,7 @@ export default function Page({ restaurantData }) {
           <div className='p-8'>
             <div className='uppercase tracking-wide text-sm text-indigo-500 font-semibold'>{restaurant.name}</div>
             <p className='mt-2 text-gray-500'>Phone: {restaurant.phoneNumber}</p>
-            <p className='text-gray-500'>Email: {restaurant.email}</p>
+            <p className='text-gray-500'>Email: {restaurant.name+"@gmail.com"}</p>
             <p className='text-gray-500'>Price Level: {restaurant.priceLevel}</p>
             <p className='text-gray-500'>Rating: {restaurant.rating}</p>
             <p className='text-gray-500'>Negotiated Value: {negPrices[restaurant.name] ? `$${negPrices[restaurant.name]} per person` : 'Not yet negotiated'}</p>
@@ -218,7 +218,8 @@ export default function Page({ restaurantData }) {
               <path d='M5.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.576 0 0.436 0.445 0.408 1.197 0 1.615l-4.576 4.307c-0.268 0.272-0.701 0.349-1.076 0l-4.576-4.307c-0.408-0.418-0.436-1.17 0-1.615z' />
             </svg>
           </div>
-          <button className='mt-5 bg-primary-gray rounded text-white px-2 left-0'>negotiate</button>
+          <button   className='mt-5 bg-black rounded-md text-white px-4 py-2 transition duration-300 ease-in-out transform hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black'
+>negotiate</button>
 
         </div>
 
