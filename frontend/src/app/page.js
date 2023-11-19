@@ -11,7 +11,6 @@ import axios from 'axios';
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import absoluteUrl from 'next-absolute-url';
 
 async function getScheduleData() {
   const res = await fetch('/api/schedule');
