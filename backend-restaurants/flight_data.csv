@@ -1,0 +1,76 @@
+Employee,Ticket Level,City,State,Country,Departing Airport,Arrival Airport,Cost,DeepLink
+Jeff Angnor,High,Toronto,Ontario,Canada,YYZ,MIA
+Jeff Angnor,High,Pittsburgh,Pennsylvania,United States,PIT,MIA
+Jeff Angnor,Low,Saint Joseph,Missouri,United States,STJ,MIA
+Jeff Angnor,Medium,Staten Island,New York,United States,EWR,MIA
+Jeff Angnor,High,Cambridge,Massachusetts,United States,BOS,MIA
+Jeff Angnor,High,Pittsburgh,Pennsylvania,United States,PIT,MIA
+Jeff Angnor,Low,New York,New York,United States,JFK,MIA
+Jeff Angnor,Medium,Needham,Massachusetts,United States,BOS,MIA
+Jeff Angnor,High,Austin,Texas,United States,AUS,MIA
+Jeff Angnor,High,Manhattan Beach,California,United States,LAX,MIA
+Jeff Angnor,Low,Houston,Texas,United States,IAH,MIA
+Jeff Angnor,Medium,Providence,Utah,United States,PVD,MIA
+Jeff Angnor,High,Pasadena,California,United States,LAX,MIA
+Jeff Angnor,High,San Francisco,California,United States,SFO,MIA
+Jeff Angnor,Low,Sacramento,California,United States,SMF,MIA
+Jeff Angnor,Medium,Denver,Colorado,United States,DEN,MIA
+Jeff Angnor,High,Syracuse,New York,United States,SYR,MIA
+Jeff Angnor,High,New York,New York,United States,JFK,MIA
+Jeff Angnor,Low,Houston,Texas,United States,IAH,MIA
+Jeff Angnor,Medium,Portland,Oregon,United States,PDX,MIA
+Jeff Angnor,Medium,Neuchâtel,Neuchâtel,Switzerland,ZRH,MIA
+Jeff Angnor,High,Fursternfeldbruck,Bayern,Germany,MUC,MIA
+Jeff Angnor,High,Cerdanyola del Valles,Barcelona [Barcelona],Spain,BCN,MIA
+Jeff Angnor,Low,High Wycombe,England,United Kingdom,LHR,MIA
+Jeff Angnor,Medium,Manchester,England,United Kingdom,MAN,MIA
+Jeff Angnor,Low,London,England,United Kingdom,LHR,MIA
+Jeff Angnor,Medium,Mexico City,México,Mexico,MEX,MIA
+Jeff Angnor,High,Mexico City,México,Mexico,MEX,MIA
+Jeff Angnor,High,Antigonish,Nova Scotia,Canada,YYG,MIA
+Jeff Angnor,Low,Montreal,Quebec,Canada,YUL,MIA
+Jeff Angnor,Medium,Ottawa,Ontario,Canada,YOW,MIA
+Jeff Angnor,High,Poznan,Wielkopolskie,Poland,POZ,MIA
+Jeff Angnor,High,Providence,Rhode Island,United States,PVD,MIA
+Jeff Angnor,Low,Santa Barbara,California,United States,SBA,MIA
+Jeff Angnor,Medium,San Diego,California,United States,SAN,MIA
+Jeff Angnor,High,Saint John,New Brunswick,Canada,YSJ,MIA
+Jeff Angnor,High,Berlin,Berlin,Germany,TXL,MIA
+Jeff Angnor,Low,Portland,Oregon,United States,PDX,MIA
+Jeff Angnor,Medium,Somerville,Massachusetts,United States,BOS,MIA
+Jeff Angnor,High,Los Angeles,California,United States,LAX,MIA
+Jeff Angnor,High,Vaughan,Ontario,Canada,YYZ,MIA
+Jeff Angnor,Low,Colbert,Washington,United States,GEG,MIA
+Jeff Angnor,Medium,Spruce Grove,Alberta,Canada,YEG,MIA
+Jeff Angnor,High,Ilford,England,United Kingdom,STN,MIA
+Jeff Angnor,High,Kilmarnock,Scotland,United Kingdom,GLA,MIA
+Jeff Angnor,Low,New York,New York,United States,JFK,MIA
+Jeff Angnor,Medium,London,England,United Kingdom,LHR,MIA
+Jeff Angnor,High,Prague,"Praha, Hlavní město",Czechia,PRG,MIA
+Jeff Angnor,High,Austin,Texas,United States,AUS,MIA
+Jeff Angnor,Low,Springfield,Illinois,United States,SPI,MIA
+Jeff Angnor,Medium,San Jose,California,United States,SJC,MIA
+Jeff Angnor,Medium,Boulder,Colorado,United States,DEN,MIA
+Jeff Angnor,High,Brooklyn,New York,United States,JFK,MIA
+Jeff Angnor,High,Philadelphia,Pennsylvania,United States,PHL,MIA
+Jeff Angnor,Low,Dallas,Texas,United States,DFW,MIA
+Jeff Angnor,Medium,Lawrence,Kansas,United States,MCI,MIA
+Jeff Angnor,Low,Troy,Michigan,United States,DTW,MIA
+Jeff Angnor,Medium,Seattle,Washington,United States,SEA,MIA
+Jeff Angnor,High,Goleta,California,United States,SBA,MIA
+Jeff Angnor,High,Seattle,Washington,United States,SEA,MIA
+Jeff Angnor,Low,Chapel Hill,North Carolina,United States,RDU,MIA
+Jeff Angnor,Medium,Somerville,Massachusetts,United States,BOS,MIA
+Jeff Angnor,High,Austin,Texas,United States,AUS,MIA
+Jeff Angnor,High,Swannanoa,North Carolina,United States,AVL,MIA
+Jeff Angnor,Low,Cary,North Carolina,United States,RDU,MIA
+Jeff Angnor,Medium,Yardley,Pennsylvania,United States,PHL,MIA
+Jeff Angnor,High,Frankfurt am Main,Hessen,Germany,FRA,MIA
+Jeff Angnor,High,Barcelona,Barcelona [Barcelona],Spain,BCN,MIA
+Jeff Angnor,Low,Barcelona,Barcelona [Barcelona],Spain,BCN,MIA
+Jeff Angnor,Medium,Cape Town,Western Cape,South Africa,CPT,MIA
+Jeff Angnor,High,Coquitlam,British Columbia,Canada,YVR,MIA
+Jeff Angnor,High,Vancouver,British Columbia,Canada,YVR,MIA
+Jeff Angnor,Low,Burnaby,British Columbia,Canada,YVR,MIA
+Jeff Angnor,Medium,Toronto,Ontario,Canada,YYZ,MIA
+Jeff Angnor,High,New York,New York,United States,JFK,MIA
