@@ -1,14 +1,16 @@
 'use client';
 import { Navbar } from '../components/Navbar';
-import ChatBox from '@/components/Chatbox';
+// import ChatBox from '@/components/Chatbox';
+import BarChart from '@/components/BarChart';
 import LaunchPage from './home/page'
+import BudgetChart from '@/components/BarChart';
+
 
 
 export default function Home() {
   return (
     <div>
-       <LaunchPage />
-      {/* <Navbar />
+       <Navbar />
       <div className="container mx-auto p-6">
       <h3 className="text-2xl mt-11 text-black text-left mb-6 font-bold font-poppins">Your event overview.</h3>
 
@@ -32,8 +34,9 @@ export default function Home() {
           <a href="#" class="inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Activity Quotes</a>
           </li>
       </ul>
-      
-
+      <div className="mt-6 w-full md:w-3/4 lg:w-1/2 xl:w-1/3 2xl:w-1/4">
+    <BudgetChart />
+    </div>
 
       </div>
       <div className="container mx-auto p-6">
@@ -59,7 +62,7 @@ export default function Home() {
           imageUrl="/placeholder-image-3.png" // Replace with your image path
         />
       </div>
-    </div> */}
+    </div> 
     </div>
   );
 }
