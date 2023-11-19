@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-const ChatBox = () => {
+const ChatBox = ({ closeControl, defaultMsg = '' }) => {
   const [messages, setMessages] = useState([]);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState(defaultMsg);
   const messagesEndRef = useRef(null);
 
   const sendMessage = (e) => {
@@ -22,6 +22,14 @@ const ChatBox = () => {
   return (
     <div className='fixed bottom-0 right-0 mb-4 mr-4 max-w-sm w-ful'>
       <div className='flex flex-col h-64 shadow-lg rounded-lg overflow-hidden bg-slate-300 pt-4'>
+        <div className='flex'>
+          <button
+            onClick={() => closeControl(false)}
+            className='text-white text-xl ml-5'
+          >
+            x
+          </button>
+        </div>
         <div className='flex-grow overflow-y-auto p-3'>
           {messages.map((message, index) => (
             <div
